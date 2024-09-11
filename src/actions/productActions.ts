@@ -37,7 +37,7 @@ export async function getProducts(
         sortOrder = order;
       }
     }
-//
+
     let query = db
     .selectFrom('products')
     .innerJoin('product_categories', 'products.id', 'product_categories.product_id') 
@@ -46,9 +46,9 @@ export async function getProducts(
     .distinct()
     .offset((pageNo - 1) * pageSize)
     .limit(pageSize)
-    .orderBy(sortField, sortOrder);
-   console.log(query,"query");
-   
+    .orderBy(sortField, sortOrder);//sorting by field and order
+
+   //filtering as per requirements
    if (categoryId) {
       
       
@@ -82,8 +82,10 @@ export async function getProducts(
         .where('products.discount', '<=', discountTo);
     }
 
-  
+  //executing the query to get all the products as per conditions
     let products = await query.execute();
+
+    //due to some conflicts with field type i have to setup the filtering of brands like this
     if (brandId) {
      
       const brandIds = brandId.split(',').map(id => id.trim());
@@ -107,7 +109,7 @@ return brandIds.some(id => productBrandIds.includes(id));
     const count = countResult?.count ?? 0;
     const lastPage = Math.ceil(count / pageSize);
 
-
+//returned the products which meets the requirements,and all other details as required in the frontend
     return { products, count, lastPage, numOfResultsOnCurPage };
   } catch (error) {
     throw error;

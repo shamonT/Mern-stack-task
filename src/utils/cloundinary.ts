@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+//I kept these in here instead of env because its a test account and for testing it woud be helpful
 const UPLOAD_PRESET = 'ml_default';
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dwxwfv7yt/image/upload';
 
+//cloudinary function to upload the files to cloudinary
 export const uploadImage = async (file) => {
   const formData = new FormData();
   formData.append('file', file);
@@ -21,5 +23,5 @@ export const uploadImage = async (file) => {
   } catch (error) {
 
     throw new Error('Image upload failed');
-  }
+  } 
 };

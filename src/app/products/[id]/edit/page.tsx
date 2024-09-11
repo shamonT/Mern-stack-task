@@ -63,8 +63,8 @@ function EditProduct({ params }: { params: { id: string } }) {
 
     onSubmit: async (values, actions) => {
  
-values.image_url=imageUrl?imageUrl:product.image_url
-   
+     values.image_url=imageUrl?imageUrl:product.image_url
+   //call the update api with the required datas
       let response=await updateProduct({id,values})
       if(response===true){
       
@@ -75,7 +75,7 @@ values.image_url=imageUrl?imageUrl:product.image_url
     },
   });
 
-  // throw new Error("Function not implemented.");
+
 
   useEffect(() => {
     setLoading(true);
@@ -200,6 +200,7 @@ values.image_url=imageUrl?imageUrl:product.image_url
      
       setIsLoading(true);
       try {
+        //taking the file and calling cloudinary function to upload to upload the file into cloudinary
         const url = await uploadImage(file);
         setImageUrl(url); 
       } catch (error) {

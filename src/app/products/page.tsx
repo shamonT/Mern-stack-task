@@ -16,13 +16,15 @@ export default async function Products({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
 
+//This line of code is using destructuring assignment to extract specific properties from the searchParams object
   const { page = 1, pageSize = DEFAULT_PAGE_SIZE,sortBy='',  brandId,
     categoryId,
     priceRangeTo,
     gender,
     occasions,
     discount, } = searchParams as any;
-
+    
+//hitting the get product function by taking all the params in the url
     const { products, lastPage, numOfResultsOnCurPage } = await getProducts(
       +page,
       +pageSize,

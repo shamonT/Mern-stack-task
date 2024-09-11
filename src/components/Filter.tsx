@@ -62,23 +62,7 @@ function Filter({ categories, brands }) {
       return [];
     }
   }, [categoriesOption]);
-  // const [categoriesSelected, setCategoriesSelected] = useState(() => {
-  //   if (searchParams.get("categoryId")) {
-  //     return searchParams
-  //       .get("categoryId")
-  //       ?.split(",")
-  //       .map((categoryId) => {
-  //         return {
-  //           value: +categoryId,
-  //           label: categoriesOption.find(
-  //             (option) => option.value === +categoryId
-  //           ).label,
-  //         };
-  //       });
-  //   } else {
-  //     return [];
-  //   }
-  // });
+  
   const [selectedGender, setSelectedGender] = useState(
     () => searchParams.get("gender") || ""
   );
@@ -141,10 +125,10 @@ function Filter({ categories, brands }) {
     }
   }, [sliderValue]);
 
-
+//added all the functions for setting the params as required to filter the products 
   function handleBrandsSelect(selectedOptions) {
     const selectedBrandIds = selectedOptions.map((option) => option.value).join(",");
-    searchParams.delete("page"); // Reset the page number when filtering
+    searchParams.delete("page");
     searchParams.set("brandId", selectedBrandIds);
     router.push(`/products?${searchParams.toString()}`, { scroll: false });
   }

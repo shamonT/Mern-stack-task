@@ -22,11 +22,12 @@ function SortBy() {
     setSortOption(currentSort);
   }, [searchParams]);
 
+  //setup the sort function to change the url as per sorting
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newSortOption = e.target.value;
     setSortOption(newSortOption);
 
-    // Build the new URL with updated sort parameter
+
     const params = new URLSearchParams(searchParams.toString());
     params.set("sortBy", newSortOption);
 

@@ -46,6 +46,7 @@ function AddProduct() {
     onSubmit: async (values:any, actions) => {
      
       values.image_url=imageUrl
+      //calling the add product function in the actions
       const response =await addProduct(values)
      if(response===true){
     
@@ -136,7 +137,7 @@ function AddProduct() {
       
       try {
         const url = await uploadImage(file);
-        setImageUrl(url); // Store the URL in the state
+        setImageUrl(url); 
       } catch (error) {
         console.error('Error uploading file:', error);
         alert('Error uploading file');

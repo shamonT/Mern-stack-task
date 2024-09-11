@@ -19,7 +19,7 @@ function PaginationSection({
   const searchParams = new URLSearchParams(query);
 
 
- 
+ //setup the function of pagination by changing the url and hits the actions 
   async function handlePrev() {
   
     if (pageNo > 1) {
@@ -50,7 +50,7 @@ function PaginationSection({
         className="text-black"
         onChange={(e) => {
           searchParams.set("pageSize", e.target.value);
-          searchParams.set("page", "1");  // Reset to first page
+          searchParams.set("page", "1");  
           router.push(`?${searchParams.toString()}`);
         }}
       >
