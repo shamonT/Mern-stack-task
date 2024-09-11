@@ -5,7 +5,7 @@ The task involves developing Features such as adding and editing of product,sort
 
 ## Github Repo:
 
-https://github.com/shamonT/MERNstack-MachineTask.git
+https://github.com/shamonT/Mern-stack-task.git
 
 ### Video Explanation
 
